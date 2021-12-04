@@ -16,6 +16,7 @@ link-citations: yes
 
 # The Basics
 
+I'll try to follow the tutorials from this [page](https://www.youtube.com/watch?v=NyJWoyVx_XI&list=PLjEaoINr3zgEq0u2MzVgAaHEBt--xLB6U)
 
 
 
