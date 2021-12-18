@@ -151,12 +151,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="modelling.html"><a href="modelling.html"><i class="fa fa-check"></i><b>3</b> Modelling</a></li>
 <li class="chapter" data-level="4" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html"><i class="fa fa-check"></i><b>4</b> Create a Hillshade with blender</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html#preprocessing-qgis"><i class="fa fa-check"></i><b>4.1</b> 1. Preprocessing QGIS</a></li>
-<li class="chapter" data-level="4.2" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html#moving-to-blender"><i class="fa fa-check"></i><b>4.2</b> 2. Moving to Blender</a>
+<li class="chapter" data-level="4.1" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html#preprocessing-qgis"><i class="fa fa-check"></i><b>4.1</b> Preprocessing QGIS</a></li>
+<li class="chapter" data-level="4.2" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html#moving-to-blender"><i class="fa fa-check"></i><b>4.2</b> Moving to Blender</a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html#rendering-engine"><i class="fa fa-check"></i><b>4.2.1</b> Rendering engine</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html#add-and-prepare-the-plane"><i class="fa fa-check"></i><b>4.3</b> 3. Add and prepare the plane</a>
+<li class="chapter" data-level="4.3" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html#add-and-prepare-the-plane"><i class="fa fa-check"></i><b>4.3</b> Add and prepare the plane</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html#set-the-dimensions-of-the-outputted-image-to-match-the-dem"><i class="fa fa-check"></i><b>4.3.1</b> Set the dimensions of the outputted image to match the dem</a></li>
 <li class="chapter" data-level="4.3.2" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html#set-ortographic-view"><i class="fa fa-check"></i><b>4.3.2</b> Set ortographic view</a></li>
@@ -188,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Follows this <a href="https://somethingaboutmaps.wordpress.com/blender-relief-tutorial-getting-set-up/">awesome tutorial</a></li>
 </ul>
 <div id="preprocessing-qgis" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> 1. Preprocessing QGIS</h2>
+<h2><span class="header-section-number">4.1</span> Preprocessing QGIS</h2>
 <ul>
 <li><p>All possible geodata must be in the same projection</p></li>
 <li><p>Clip and resample</p></li>
@@ -203,7 +203,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="create-a-hillshade-with-blender.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gdal_translate</span> <span class="at">-ot</span> UInt16 <span class="at">-of</span> GTiff /home/robink/projects/qgis/data/dem/bawü/hohenwielRescaled065535.tif /home/robink/projects/qgis/data/dem/bawü/hohenwielRescaled065535_uint.tif</span></code></pre></div>
 </div>
 <div id="moving-to-blender" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> 2. Moving to Blender</h2>
+<h2><span class="header-section-number">4.2</span> Moving to Blender</h2>
 <div id="rendering-engine" class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Rendering engine</h3>
 <ul>
@@ -213,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="add-and-prepare-the-plane" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> 3. Add and prepare the plane</h2>
+<h2><span class="header-section-number">4.3</span> Add and prepare the plane</h2>
 <p><strong>Move it to the center</strong></p>
 <ul>
 <li>Set x,y,z to 0</li>

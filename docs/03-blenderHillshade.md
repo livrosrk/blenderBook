@@ -2,7 +2,7 @@
 
 - Follows this [awesome tutorial](https://somethingaboutmaps.wordpress.com/blender-relief-tutorial-getting-set-up/)
 
-## 1. Preprocessing QGIS
+## Preprocessing QGIS
 
 - All possible geodata must be in the same projection
 
@@ -22,7 +22,7 @@ $$\frac{pixel value - Minimum}{maximum - pixelvalue} * 65535 $$
 gdal_translate -ot UInt16 -of GTiff /home/robink/projects/qgis/data/dem/bawü/hohenwielRescaled065535.tif /home/robink/projects/qgis/data/dem/bawü/hohenwielRescaled065535_uint.tif
 ```
 
-## 2. Moving to Blender 
+## Moving to Blender 
 
 ### Rendering engine
 
@@ -30,7 +30,7 @@ gdal_translate -ot UInt16 -of GTiff /home/robink/projects/qgis/data/dem/bawü/ho
 
 - Check the `experimental feature set`
 
-## 3. Add and prepare the plane
+## Add and prepare the plane
 
 **Move it to the center**
 
