@@ -2,3 +2,10 @@ the-basics
 user-interface
 the-3d-viewport
 modelling
+create-a-hillshade-with-blender
+preprocessing-qgis
+moving-to-blender
+rendering-engine
+add-and-prepare-the-plane
+set-the-dimensions-of-the-outputted-image-to-match-the-dem
+set-ortographic-view

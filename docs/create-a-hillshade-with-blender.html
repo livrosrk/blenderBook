@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Learning the Basics of Blender for no Reason</title>
+  <title>Chapter 4 Create a Hillshade with blender | Learning the Basics of Blender for no Reason</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Learning the Basics of Blender for no Reason" />
+  <meta property="og:title" content="Chapter 4 Create a Hillshade with blender | Learning the Basics of Blender for no Reason" />
   <meta property="og:type" content="book" />
   
   
@@ -20,7 +20,7 @@ set in the _output.yml file.</p>" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Learning the Basics of Blender for no Reason" />
+  <meta name="twitter:title" content="Chapter 4 Create a Hillshade with blender | Learning the Basics of Blender for no Reason" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -37,8 +37,8 @@ set in the _output.yml file.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="modelling.html"/>
 
-<link rel="next" href="user-interface.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -182,23 +182,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Learning the Basics of Blender for no Reason</h1>
-<p class="author"><em>Robin Kohrs</em></p>
-<p class="date"><em>2021-12-18</em></p>
+<div id="create-a-hillshade-with-blender" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Create a Hillshade with blender</h1>
+<ul>
+<li>Follows this <a href="https://somethingaboutmaps.wordpress.com/blender-relief-tutorial-getting-set-up/">awesome tutorial</a></li>
+</ul>
+<div id="preprocessing-qgis" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> 1. Preprocessing QGIS</h2>
+<ul>
+<li><p>All possible geodata must be in the same projection</p></li>
+<li><p>Clip and resample</p></li>
+<li><p>Rescale to <code>UInt16</code>so that each pixel holds a value between 0 and <span class="math inline">\(2^{16}\)</span></p></li>
+<li><p>I need to adjust that such that the places that were once were the minimum become 0, and the places that were once were the maximnum become 65,535,</p></li>
+</ul>
+<p><span class="math display">\[\frac{pixel value - Minimum}{maximum - pixelvalue} * 65535 \]</span></p>
+<ul>
+<li><p>Luckily there is the <code>rescale</code> function already in qgis</p></li>
+<li><p>Save as 16 Bit unsigned integer: For that there is the <code>translate (change format)</code> tool in qgis. A correponding gdal command looks like this:</p></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="create-a-hillshade-with-blender.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gdal_translate</span> <span class="at">-ot</span> UInt16 <span class="at">-of</span> GTiff /home/robink/projects/qgis/data/dem/bawü/hohenwielRescaled065535.tif /home/robink/projects/qgis/data/dem/bawü/hohenwielRescaled065535_uint.tif</span></code></pre></div>
 </div>
-<div id="the-basics" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> The Basics</h1>
-<p>I’ll try to follow the tutorials from this <a href="https://www.youtube.com/watch?v=NyJWoyVx_XI&amp;list=PLjEaoINr3zgEq0u2MzVgAaHEBt--xLB6U">page</a></p>
+<div id="moving-to-blender" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> 2. Moving to Blender</h2>
+<div id="rendering-engine" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Rendering engine</h3>
+<ul>
+<li><p>Change the rendering engine to cycles</p></li>
+<li><p>Check the <code>experimental feature set</code></p></li>
+</ul>
+</div>
+</div>
+<div id="add-and-prepare-the-plane" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> 3. Add and prepare the plane</h2>
+<p><strong>Move it to the center</strong></p>
+<ul>
+<li>Set x,y,z to 0</li>
+</ul>
+<p><strong>Aspect ratio of the plane must match the aspect ration of the dem</strong></p>
+<ul>
+<li>Chage the values of the <code>Scales</code> field to match the ration of the heightmap</li>
+<li>E.g. a heightmap with 3000 x 2000 Pixels would have a 3 x 2 ratio here</li>
+</ul>
+<p><strong>Add a new Material</strong></p>
+<ul>
+<li>CLicking the red globe icon and make sure it is the principal bsdf shader</li>
+<li>Change to the Shader Editor and add a Image texture Displacement modifier</li>
+<li>Connect the color from the image texture to the height of the displacement</li>
+<li>And the displacement of the displacement to the displacement in the material output</li>
+</ul>
+<p><img src="images/planeSetup.png" />
+### The Camera</p>
+<ul>
+<li>Set the location to the center of the coordinate system just above</li>
+</ul>
+<p><img src="images/cameraPosition.png" /></p>
+<ul>
+<li>Make it point downward by also changing the rotation to 0,0,0</li>
+</ul>
+<p><img src="images/cameraRotation.png" /></p>
+<div id="set-the-dimensions-of-the-outputted-image-to-match-the-dem" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Set the dimensions of the outputted image to match the dem</h3>
+<p><img src="images/dimensions.png" /></p>
+<ul>
+<li>Now the camera aspect ration should match the aspcet ratio of the plane</li>
+</ul>
+</div>
+<div id="set-ortographic-view" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Set ortographic view</h3>
+<ul>
+<li>Change the camera to be an orthographic, rather than a point like camera</li>
+<li>For the camera to match the entire dem change the scale to match exactly</li>
+</ul>
+<p><span class="math display">\[2 \times largest Scale\]</span>
+- As our image is 947 * 502 pixel I set the largest scale to be 9.47. So I plug 18.94 in here and it should match the DEM</p>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="modelling.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="user-interface.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -229,7 +296,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-blenderHillshade.Rmd",
 "text": "Edit"
 },
 "history": {
