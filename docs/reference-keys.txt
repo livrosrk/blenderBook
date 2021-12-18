@@ -9,3 +9,11 @@ rendering-engine
 add-and-prepare-the-plane
 set-the-dimensions-of-the-outputted-image-to-match-the-dem
 set-ortographic-view
+put-an-image-on-top
+qgis
+blender
+add-the-overlay-map-e.g.-osm
+how-to-render-the-3d-viewport-the-easy-way
+viewport-options
+some-useful-shorcuts
+set-current-viewport-view-to-activate-camera-view

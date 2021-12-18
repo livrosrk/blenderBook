@@ -38,7 +38,7 @@ set in the _output.yml file.</p>" />
   
   
 <link rel="prev" href="modelling.html"/>
-
+<link rel="next" href="how-to-render-the-3d-viewport-the-easy-way.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -161,6 +161,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html#set-the-dimensions-of-the-outputted-image-to-match-the-dem"><i class="fa fa-check"></i><b>4.3.1</b> Set the dimensions of the outputted image to match the dem</a></li>
 <li class="chapter" data-level="4.3.2" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html#set-ortographic-view"><i class="fa fa-check"></i><b>4.3.2</b> Set ortographic view</a></li>
 </ul></li>
+<li class="chapter" data-level="4.4" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html#put-an-image-on-top"><i class="fa fa-check"></i><b>4.4</b> Put an image on top</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html#qgis"><i class="fa fa-check"></i><b>4.4.1</b> QGIS</a></li>
+<li class="chapter" data-level="4.4.2" data-path="create-a-hillshade-with-blender.html"><a href="create-a-hillshade-with-blender.html#blender"><i class="fa fa-check"></i><b>4.4.2</b> Blender</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="how-to-render-the-3d-viewport-the-easy-way.html"><a href="how-to-render-the-3d-viewport-the-easy-way.html"><i class="fa fa-check"></i><b>5</b> How to render the 3d Viewport (the easy way)?</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="how-to-render-the-3d-viewport-the-easy-way.html"><a href="how-to-render-the-3d-viewport-the-easy-way.html#viewport-options"><i class="fa fa-check"></i><b>5.1</b> Viewport options</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="some-useful-shorcuts.html"><a href="some-useful-shorcuts.html"><i class="fa fa-check"></i><b>6</b> Some useful Shorcuts</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="some-useful-shorcuts.html"><a href="some-useful-shorcuts.html#set-current-viewport-view-to-activate-camera-view"><i class="fa fa-check"></i><b>6.1</b> Set current viewport view to activate camera view</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -255,7 +268,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><span class="math display">\[2 \times largest Scale\]</span>
 - As our image is 947 * 502 pixel I set the largest scale to be 9.47. So I plug 18.94 in here and it should match the DEM</p>
+</div>
+</div>
+<div id="put-an-image-on-top" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Put an image on top</h2>
+<ul>
+<li>Based on <a href="https://www.youtube.com/watch?v=AJJNX243k9E">this tutorial</a></li>
+</ul>
+<div id="qgis" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> QGIS</h3>
+<ul>
+<li>Export the dem and the overlay with the same settings under:</li>
+</ul>
+<p><code>Project -&gt; Import/Export -&gt; And get the extent from the dem layer</code></p>
+<ul>
+<li>Here set the Pixels first (by using the extent from the layer) and then set the dpi</li>
+</ul>
+</div>
+<div id="blender" class="section level3" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Blender</h3>
+<ul>
+<li><p>in Blender add a <code>plane</code>, go to edit mode with <code>tab</code>, right click on the plane and click <strong>subdivide</strong>. Then click many times (maybe 5) <code>shift + R</code> to repeat the action and subdivide it many times.</p></li>
+<li><p>Add a <strong>modifier</strong>. In this case a <code>displacement modifier</code> and call it DEM.</p></li>
+<li><p>By alternating the <code>strength</code> option you can kind of change the <em>z-level</em>
+<img src="images/imageTopModifier.png" /></p></li>
+<li><p>Add a <strong>texture</strong> either by clicking in the above menu on the two lines</p></li>
+<li><p>Go to <code>open</code> and select the image</p></li>
+</ul>
+<div id="add-the-overlay-map-e.g.-osm" class="section level4" number="4.4.2.1">
+<h4><span class="header-section-number">4.4.2.1</span> Add the overlay map (e.g. OSM)</h4>
+<ul>
+<li><p>You need to add a <strong>material</strong></p></li>
+<li></li>
+</ul>
 
+</div>
 </div>
 </div>
 </div>
@@ -264,8 +311,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="modelling.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="modelling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="how-to-render-the-3d-viewport-the-easy-way.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
