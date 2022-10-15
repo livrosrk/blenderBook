@@ -3,3 +3,10 @@
 ## Set current viewport view to activate camera view
 
 - Original is `Align Camera to View` and is something with shift + numpad 0, but this does not work on my laptop, so I set it to `ctrl + shift  + m`
+
+## Shift - s 
+- Opens the 3-Cursor menu. You can place the 3d-cursor then where you want it to
+
+## alt + middle mouse
+
+- Select an object and hit alt + mouse. It will put the pivot point? there (it will essentially zoom to that object...)
