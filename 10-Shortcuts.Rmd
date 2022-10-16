@@ -10,3 +10,14 @@
 ## alt + middle mouse
 
 - Select an object and hit alt + mouse. It will put the pivot point? there (it will essentially zoom to that object...)
+
+
+## Emulate Numpad
+
+- when emulating numpad your normal numbers will act as the numpad numbers.
+- Though, you are losing some of the shortcuts that were attached to them
+- And you can remat the `.` form the numbad for zooming to the selected one
+
+## Zoom to selected object
+
+- Remap the keymap `Frame Selected` from `Numpad .` to anything else `Enter` (maybe)
